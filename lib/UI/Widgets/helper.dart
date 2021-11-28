@@ -18,36 +18,38 @@ class HelperView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: Column(mainAxisSize: MainAxisSize.min, children: [
-        Container(
-          child: Text(
+    return Flexible(
+      fit: FlexFit.loose,
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Text(
             text,
-            style: TextStyle(
+            style: const TextStyle(
               fontSize: 30,
               fontWeight: FontWeight.bold,
             ),
           ),
-        ),
-        const SizedBox(
-          height: 10,
-        ),
-        Flexible(
-          fit: FlexFit.loose,
-          child: ListView.builder(
-            shrinkWrap: true,
-            scrollDirection: Axis.horizontal,
-            itemBuilder: (context, index) {
-              return MovieTile(
-                index: index,
-                movies: movies,
-                isNew: isNew,
-              );
-            },
-            itemCount: movies.length,
+          const SizedBox(
+            height: 10,
           ),
-        ),
-      ]),
+          Flexible(
+            fit: FlexFit.loose,
+            child: ListView.builder(
+              shrinkWrap: true,
+              scrollDirection: Axis.horizontal,
+              itemBuilder: (context, index) {
+                return MovieTile(
+                  index: index,
+                  movies: movies,
+                  isNew: isNew,
+                );
+              },
+              itemCount: movies.length,
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

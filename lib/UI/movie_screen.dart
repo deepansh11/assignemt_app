@@ -24,7 +24,7 @@ class _MovieScreenState extends ConsumerState<MovieScreen>
       ref.watch(fetchMovies).when(
           data: (movies) {
             return Padding(
-              padding: const EdgeInsets.all(10.0),
+              padding: const EdgeInsets.all(8.0),
               child: Column(
                 children: [
                   HelperView(
@@ -32,10 +32,16 @@ class _MovieScreenState extends ConsumerState<MovieScreen>
                     movies: movies,
                     isNew: false,
                   ),
+                  SizedBox(
+                    height: 20,
+                  ),
                   HelperView(
                     text: 'NEW',
                     movies: movies,
                     isNew: true,
+                  ),
+                  SizedBox(
+                    height: 20,
                   ),
                   HelperView(
                     text: 'TOP RATED',

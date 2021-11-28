@@ -22,7 +22,9 @@ class CustomAppBar extends StatefulWidget with PreferredSizeWidget {
 class _CustomAppBarState extends State<CustomAppBar> {
   @override
   Widget build(BuildContext context) {
-    return AppBar(
+    return SliverAppBar(
+      expandedHeight: 150,
+      pinned: false,
       bottom: TabBar(
         onTap: (index) {},
         padding: const EdgeInsets.all(15),
@@ -53,7 +55,7 @@ class _CustomAppBarState extends State<CustomAppBar> {
               BoxShadow(
                   color: Colors.pink.withOpacity(0.3),
                   blurRadius: 25,
-                  offset: Offset(10, 20))
+                  offset: const Offset(10, 20))
             ]),
       ),
       title: const Text('Deepansh Pahwa'),
@@ -74,18 +76,12 @@ class _CustomAppBarState extends State<CustomAppBar> {
                   borderRadius: BorderRadius.circular(5),
                   borderSide:
                       const BorderSide(style: BorderStyle.none, width: 0)),
-
               prefixIcon: const Icon(
                 Icons.search,
                 color: Colors.grey,
                 size: 20,
               ),
               fillColor: Colors.grey.shade800,
-              // prefixIcon: Icon(
-              //   Icons.search,
-              //   color: Colors.grey,
-              //   size: 20,
-              // ),
               hintText: 'Search',
               hintStyle: const TextStyle(
                 color: Colors.grey,

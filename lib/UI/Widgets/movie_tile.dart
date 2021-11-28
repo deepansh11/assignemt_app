@@ -31,21 +31,34 @@ class MovieTile extends StatelessWidget {
           },
           child: Stack(children: [
             Container(
-              width: 100,
-              padding: const EdgeInsets.all(10),
+              width: 80,
+              padding: const EdgeInsets.all(8),
               child: Image.network(
                 movies![index].poster!,
                 fit: BoxFit.cover,
               ),
             ),
             isNew == true
-                ? const Positioned(
-                    child: Text(
-                      'New',
-                      style: TextStyle(backgroundColor: Colors.green),
+                ? Positioned(
+                    child: Container(
+                      decoration: BoxDecoration(
+                          boxShadow: const [
+                            BoxShadow(
+                                color: Colors.green,
+                                blurRadius: 25,
+                                offset: Offset(0, 20))
+                          ],
+                          color: Colors.green,
+                          borderRadius: BorderRadius.circular(5)),
+                      padding: const EdgeInsets.symmetric(
+                          vertical: 3, horizontal: 5),
+                      child: const Text(
+                        'New',
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      ),
                     ),
-                    bottom: 0,
-                    right: 35,
+                    bottom: -2,
+                    right: 22.5,
                   )
                 : Container()
           ]),

@@ -17,6 +17,7 @@ class Home extends ConsumerStatefulWidget {
 class _HomeState extends ConsumerState<Home> with TickerProviderStateMixin {
   int _selectedIndex = 0;
   TabController? controller;
+
   int tabIndex = 0;
 
   @override
@@ -63,11 +64,22 @@ class _HomeState extends ConsumerState<Home> with TickerProviderStateMixin {
     ];
 
     return Scaffold(
-      body: IndexedStack(
-        index: _selectedIndex,
-        children: items,
+      body: NestedScrollView(
+        scrollDirection: Axis.vertical,
+        headerSliverBuilder: (context, innerBoxIsScrolled) => [
+          CustomAppBar(
+            controller: controller,
+            selectedIndex: _selectedIndex,
+          )
+        ],
+        body: IndexedStack(
+          index: _selectedIndex,
+          children: items,
+        ),
       ),
       bottomNavigationBar: BottomNavigationBar(
+        elevation: 8,
+        backgroundColor: Colors.grey.shade700,
         selectedItemColor: Colors.pink,
         currentIndex: _selectedIndex,
         onTap: _onTappedItem,
@@ -89,10 +101,6 @@ class _HomeState extends ConsumerState<Home> with TickerProviderStateMixin {
               ),
               label: 'Favorites'),
         ],
-      ),
-      appBar: CustomAppBar(
-        controller: controller,
-        selectedIndex: tabIndex,
       ),
     );
   }
